@@ -19,7 +19,6 @@
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoIcon;
-@property (weak, nonatomic) IBOutlet UITextField *cardNumberField;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 
 @end

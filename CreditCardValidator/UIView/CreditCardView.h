@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CreditCardView : UIView
 
+@property (weak, nonatomic) IBOutlet UITextField *cardNumberField;
+
 @end
 
 NS_ASSUME_NONNULL_END

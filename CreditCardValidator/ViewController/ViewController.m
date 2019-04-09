@@ -20,7 +20,15 @@
     [super viewDidLoad];
     self.cardView.layer.masksToBounds = YES;
     self.cardView.layer.cornerRadius = 10;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)dismissKeyboard {
+    [self.cardView.cardNumberField resignFirstResponder];
 }
 
 
