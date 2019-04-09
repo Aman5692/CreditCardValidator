@@ -154,6 +154,16 @@
     return [strtoremove substringWithRange:NSMakeRange(location, i  - location)];
 }
 
+- (void)validateCardNumber:(NSString *)text {
+    BOOL isValid = [self.validator validateCreditCardNumber:text];
+    if(!isValid) {
+        [self.errorLabel setText:@"Card info not found"];
+    }
+    else {
+        [self.errorLabel setText:@"Valid card info!"];
+    }
+}
+
 
 #pragma mark - UITextFieldEditing
 
@@ -188,6 +198,9 @@
     [self updateCreditCardView:type];
     //AutoFormat credit card number, as per card type
     [self autoFormatCardNumber:textField.text];
+    if(textField.text.length >= self.cardNumberFormat.length) {
+        [self validateCardNumber:textField.text];
+    }
 }
 
 /*
@@ -195,13 +208,7 @@
  * Update error label
  */
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    BOOL isValid = [self.validator validateCreditCardNumber:textField.text];
-    if(!isValid) {
-        [self.errorLabel setText:@"Card info not found"];
-    }
-    else {
-        [self.errorLabel setText:@"Valid card info!"];
-    }
+    [self validateCardNumber:textField.text];
     return YES;
 }
 
